@@ -5,18 +5,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <p>테스트 화면의 메인 화면입니다.</p>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          전체적인 구현 방식에 대해서 react와 yarn 정리하고 학습하면서 진행될 프로젝트.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
