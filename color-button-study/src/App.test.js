@@ -1,14 +1,21 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
-import { logRoles } from '@testing-library/dom';
+test('버튼의 초기 색상과 문구가 올바르게 있는지. 가지고 있다면 클릭했을 때 업데이트 되는 경우.', () => {
+  render( <App />);
 
-test('버튼이 올바른 초기 색상을 가지고 있는 경우. button has correct initail color', () => {
-  const {container} = render( <App />);
-  logRoles(container);
+  // 버튼과 텍스트가 올바르게 '파란색으로 변경' 있는 요소 찾기.
+  const colorButton = screen.getByRole('button', { name: 'Change to blue color' });
 
-  const colorButton = screen.getByRole('button', { name: 'Change to blue color'});
+  // 배경 초기 색이 보라색인지.
+  expect(colorButton).toHaveStyle({"background-color": "purple"});
 
-  // expect the background color to be purple
-  expect(colorButton).toHaveStyle({"background-color": "purple"})
+  // 버튼 클릭시. | click button
+  fireEvent.click(colorButton);
+
+  // 버튼 클릭 후. 배경색이 파란색인 경우. | expect the backgorund color to be blue
+  expect(colorButton).toHaveStyle({ "background-color": "blue"});
+
+  // 버튼 클릭 후. 텍스트가 보라색이 됐는지. | expect the button text to be 
+  expect(colorButton).toHaveTextContent("Change to purple");
 });
