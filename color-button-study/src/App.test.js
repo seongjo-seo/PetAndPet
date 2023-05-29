@@ -19,3 +19,15 @@ test('버튼의 초기 색상과 문구가 올바르게 있는지. 가지고 있
   // 버튼 클릭 후. 텍스트가 보라색이 됐는지. | expect the button text to be 
   expect(colorButton).toHaveTextContent("Change to purple");
 });
+
+test('초기화 조건', () =>{
+  render(<App/>);
+
+  // 버튼이 활성화된 상태로 시작됐는지 확인.
+  const colorButton = screen.getByRole('button', {name : 'Change to blue color'});
+  expect(colorButton).toBeEnabled();
+
+  // 체크 박스가 체크되지 않은 상태로 시작했는지 확인.
+  const checkbox = screen.getByRole('checkbox');
+  expect(checkbox).not.toBeChecked();
+})
