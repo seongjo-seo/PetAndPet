@@ -31,3 +31,17 @@ test('초기화 조건', () =>{
   const checkbox = screen.getByRole('checkbox');
   expect(checkbox).not.toBeChecked();
 })
+
+test('체크 박스가 처음에는 버튼을 비활성화하고, 두 번째 클릭 시 활성화.', ()=>{
+  render(<App/>);
+
+  const checkbox = screen.getByRole('checkbox');
+  const button = screen.getByRole('button');
+
+  fireEvent.click(checkbox);
+  expect(button).toBeDisabled();
+
+  fireEvent.click(checkbox);
+  expect(button).toBeEnabled();
+
+})
